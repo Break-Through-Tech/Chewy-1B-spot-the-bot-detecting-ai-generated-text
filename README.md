@@ -17,6 +17,7 @@
 | Angelina Yeh      | @AngelinaY17    |                                                                          |
 | Leah Torres       | @lctorr         |                                                                          |
 | Allyson Keightley | @akeight        |                                                                          |
+| Brian Casio       | @briancasio     |                                                                          |
 
 
 ---
