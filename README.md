@@ -11,12 +11,12 @@
 | Name              | GitHub Handle   | Contribution                                                             |
 |-------------------|-----------------|--------------------------------------------------------------------------|
 | Abdulahi Oyebanji | @abdulahi-banji |                                                                          |
-| Austin Xu         | @austxu         |                                                                          |
-| Amina Hassan      | @aminahassan    |                                                                          |
+| Austin Xu         | @austxu         |                                                                          |                                                                        |
 | Matthew Han       | @matthewjyhan   |                                                                          |
 | Angelina Yeh      | @AngelinaY17    |                                                                          |
 | Leah Torres       | @lctorr         |                                                                          |
 | Allyson Keightley | @akeight        |                                                                          |
+| Brian Casio       | @briancasio     |                                                                          |
 
 
 ---
