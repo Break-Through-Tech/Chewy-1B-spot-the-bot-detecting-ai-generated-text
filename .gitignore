@@ -1,5 +1,6 @@
 # Full/generated dataset — pull it with data/download_hc3.py, don't commit it (~147 MB)
 data/hc3_all.csv
+data/processed/*.csv
 
 # Python
 __pycache__/
