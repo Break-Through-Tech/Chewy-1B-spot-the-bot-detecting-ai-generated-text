@@ -1,3 +1,8 @@
 pandas
 numpy
 jupyter
+ipykernel
+scikit-learn
+matplotlib
+seaborn
+datasets>=2.14
