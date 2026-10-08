@@ -23,7 +23,7 @@ def main():
     # `trust_remote_code=True` is required: HC3 ships a small custom loading
     # script. If your `datasets` version complains, upgrade it, or load the
     # auto-generated Parquet mirror instead (see data/README.md).
-    ds = load_dataset("Hello-SimpleAI/HC3", "all", trust_remote_code=True)
+    ds = load_dataset("Hello-SimpleAI/HC3", revision="refs/convert/parquet")
     df = ds["train"].to_pandas()
 
     df.to_csv(OUT_PATH, index=False)
