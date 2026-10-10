@@ -60,19 +60,19 @@ Our [EDA notebook](notebooks/eda.ipynb) analyzes **67,232 training answers** fro
 
 **Dataset balance:** human answers make up about 68% of training, and Reddit ELI5 is the largest domain.
 
-![Dataset balance: human and AI answers by domain and domain proportions across splits](eda-domain-and-split-balance.png)
+![Dataset balance: human and AI answers by domain and domain proportions across splits](./docs/images/eda/eda-domain-and-split-balance.png)
 
 **Answer length:** human answers have a median of 74 words, compared with 175 for ChatGPT. This helps us check whether a detector might rely too much on length.
 
-![Comparison of human and ChatGPT answer lengths](eda-answer-length.png)
+![Comparison of human and ChatGPT answer lengths](./docs/images/eda/eda-answer-length.png)
 
 **Writing style:** we compare personal language, contractions, questions, exclamations, and links as possible clues for the detector.
 
-![Human and ChatGPT conversational writing patterns](eda-conversational-style.png)
+![Human and ChatGPT conversational writing patterns](./docs/images/eda/eda-conversational-style.png)
 
 **Word length:** this chart compares the proportion of short, medium, and long words in each class.
 
-![Short, medium, and long words in human and ChatGPT answers](eda-word-length.png)
+![Short, medium, and long words in human and ChatGPT answers](./docs/images/eda/eda-word-length.png)
 
 These patterns describe our dataset; no single pattern proves that an answer was written by AI.
 
