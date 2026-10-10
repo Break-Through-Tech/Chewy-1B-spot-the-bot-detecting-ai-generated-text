@@ -1,6 +1,6 @@
 # Spot the Bot- Detecting AI Generated Text
 
-> 💡 **Note for the team:** This is just a template. Update the above title with your AI Studio Challenge Project name. Remove all guidance notes and example text in this template and populate this README with your own content. You can work on this README throughout AI Studio, and get feedback from your AI Studio Coach and Challenge Advisor before finalizing it.  
+This project explores how to distinguish human-written text from ChatGPT-generated text using the HC3 dataset. We compare answer length, vocabulary, punctuation, and writing patterns to understand the data before building a text classifier.
 
 ---
 
@@ -56,16 +56,25 @@
 
 ## 📊 **Data Exploration**
 
-**You might consider describing the following (as applicable):**
+Our [EDA notebook](notebooks/eda.ipynb) analyzes **67,232 training answers** from the updated HC3 cleaning and splitting pipeline. Here are some of the charts from our exploration.
 
-* The dataset(s) used: origin, format, size, type of data
-* Data exploration and preprocessing approaches
-* Insights from your Exploratory Data Analysis (EDA)
-* Challenges and assumptions when working with the dataset(s)
+**Dataset balance:** human answers make up about 68% of training, and Reddit ELI5 is the largest domain.
 
-**Potential visualizations to include:**
+![Dataset balance: human and AI answers by domain and domain proportions across splits](eda-domain-and-split-balance.png)
 
-* Plots, charts, heatmaps, feature visualizations, sample dataset images
+**Answer length:** human answers have a median of 74 words, compared with 175 for ChatGPT. This helps us check whether a detector might rely too much on length.
+
+![Comparison of human and ChatGPT answer lengths](eda-answer-length.png)
+
+**Writing style:** we compare personal language, contractions, questions, exclamations, and links as possible clues for the detector.
+
+![Human and ChatGPT conversational writing patterns](eda-conversational-style.png)
+
+**Word length:** this chart compares the proportion of short, medium, and long words in each class.
+
+![Short, medium, and long words in human and ChatGPT answers](eda-word-length.png)
+
+These patterns describe our dataset; no single pattern proves that an answer was written by AI.
 
 ---
 
