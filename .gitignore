@@ -9,3 +9,6 @@ __pycache__/
 .venv/
 venv/
 .env
+
+# Generated fitted model artifacts
+data/processed/*.joblib
