@@ -8,15 +8,15 @@ This project explores how to distinguish human-written text from ChatGPT-generat
 
 **Example:**
 
-| Name              | GitHub Handle   | Contribution                                                             |
-|-------------------|-----------------|--------------------------------------------------------------------------|
-| Abdulahi Oyebanji | @abdulahi-banji |                                                                          |
-| Austin Xu         | @austxu         |                                                                          |                                                                        |
-| Matthew Han       | @matthewjyhan   |                                                                          |
-| Angelina Yeh      | @AngelinaY17    |                                                                          |
-| Leah Torres       | @lctorr         |                                                                          |
-| Allyson Keightley | @akeight        |                                                                          |
-| Brian Casio       | @briancasio     |                                                                          |
+| Name              | GitHub Handle   | Contribution                                                                                                       |
+|-------------------|-----------------|--------------------------------------------------------------------------------------------------------------------|
+| Abdulahi Oyebanji | @abdulahi-banji |                                                                                                                    |
+| Austin Xu         | @austxu         |                                                                                                                    |
+| Matthew Han       | @matthewjyhan   |                                                                                                                    |
+| Angelina Yeh      | @AngelinaY17    |                                                                                                                    |
+| Leah Torres       | @lctorr         |                                                                                                                    |
+| Allyson Keightley | @akeight        | Project organization, dataset preperation, model selection, hyperparameter tuning, model training and optimization |
+| Brian Casio       | @briancasio     |                                                                                                                    |
 
 
 ---
