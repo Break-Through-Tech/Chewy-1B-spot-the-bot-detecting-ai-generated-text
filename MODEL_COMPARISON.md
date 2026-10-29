@@ -13,33 +13,33 @@ This is the shared repository record for classifiers trained on the HC3 answer-l
 ### Held-out test metrics
 
 | Metric | Result |
-|---|---:|
-| Accuracy | 0.9899 |
-| Macro precision | 0.9887 |
-| Macro recall | 0.9881 |
-| Macro F1 | 0.9884 |
-| Majority-class accuracy | 0.6795 |
+|---|-------:|
+| Accuracy | 0.9864 |
+| Macro precision | 0.9844 |
+| Macro recall | 0.9844 |
+| Macro F1 | 0.9844 |
+| Majority-class accuracy | 0.6791 |
 
 Confusion matrix (rows = true class, columns = predicted class; order = human, ChatGPT):
 
 |  | Predicted human | Predicted ChatGPT |
-|---|---:|---:|
-| True human | 5,680 | 39 |
-| True ChatGPT | 46 | 2,652 |
+|---|----------------:|------------------:|
+| True human |           8,493 |                86 |
+| True ChatGPT |              86 |             3,967 |
 
 ### Per-domain test results
 
 | Domain | Answers | Accuracy | Macro F1 |
-|---|---:|---:|---:|
-| Finance | 853 | 0.9883 | 0.9882 |
-| Medicine | 262 | 1.0000 | 1.0000 |
-| Open Q&A | 470 | 0.9319 | 0.9124 |
-| Reddit ELI5 | 6,664 | 0.9947 | 0.9930 |
-| Wikipedia CS | 168 | 0.9524 | 0.9523 |
+|---|--------:|---------:|---------:|
+| Finance |   1,283 |   0.9852 |   0.9851 |
+| Medicine |     388 |   0.9974 |   0.9974 |
+| Open Q&A |     710 |   0.9352 |   0.9171 |
+| Reddit ELI5 |   9,997 |   0.9919 |   0.9892 |
+| Wikipedia CS |     254 |   0.9016 |   0.9015 |
 
 ### Findings and limitations
 
-The baseline substantially exceeds the test majority-class accuracy. It makes 85 errors: 39 human answers flagged as ChatGPT and 46 ChatGPT answers classified as human. Performance is lower on Open Q&A than on the larger Reddit ELI5 domain; the Wikipedia CS test group is also small, so those domain estimates are less stable.
+The baseline substantially exceeds the test majority-class accuracy. It makes 85 errors: 86 human answers flagged as ChatGPT and 86 ChatGPT answers classified as human. Performance is lower on Open Q&A than on the larger Reddit ELI5 domain; the Wikipedia CS test group is also small, so those domain estimates are less stable.
 
 The strongest learned terms include “including,” “important,” and “such as” for ChatGPT and `URL_0`, “basically,” and “etc.” for human answers. These are corpus-level associations, not reliable authorship evidence. High HC3 performance should not be read as evidence that the detector generalizes to modern models, new topics, or real-world writing; the source text and benchmark are limited. Review false positives and false negatives and evaluate robustness before using the model outside this benchmark.
 
