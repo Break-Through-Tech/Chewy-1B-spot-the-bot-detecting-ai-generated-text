@@ -12,3 +12,9 @@ venv/
 
 # Generated fitted model artifacts
 data/processed/*.joblib
+models/tfidf/*.joblib
+models/tfidf/*.keras
+
+.idea/*
+docs/nn-model-experiments.md
+
