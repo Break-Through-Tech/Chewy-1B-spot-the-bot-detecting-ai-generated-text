@@ -56,7 +56,7 @@ This project explores how to distinguish human-written text from ChatGPT-generat
 
 ## 📊 **Data Exploration**
 
-Our [EDA notebook](notebooks/eda.ipynb) analyzes **67,232 training answers** from the updated HC3 cleaning and splitting pipeline. Here are some of the charts from our exploration.
+Our [EDA notebook](notebooks/data/eda.ipynb) analyzes **67,232 training answers** from the updated HC3 cleaning and splitting pipeline. Here are some of the charts from our exploration.
 
 **Dataset balance:** human answers make up about 68% of training, and Reddit ELI5 is the largest domain.
 
