@@ -76,6 +76,56 @@ Increasing K made a pretty big difference in performance. The smaller K values p
 
 KNN made 545 incorrect predictions, including 357 human answers classified as ChatGPT and 188 ChatGPT answers classified as human. It also takes more computation to make predictions since it needs to compare answers against training examples. These results are specific to the HC3 dataset, so they don't necessarily mean the model would perform as well on other datasets or newer AI-generated text. Earlier KNN configurations were also evaluated on the test set during development, so the final test results weren't from a completely untouched test set.
 
+## Linear SVM
+
+**Data:** 58,823 training answers, 12,611 validation answers, and 12,632 test answers, generated using the updated HC3 cleaning and question-grouped splitting notebooks. The test set contains 8,579 human answers and 4,053 ChatGPT answers. Questions are split 70/15/15, stratified by source with `random_state=42`, with no question IDs shared across splits.
+
+**Features:** Shared word-level TF-IDF vectorizer with unigrams and bigrams, `min_df=2`, `max_features=100000`, sublinear TF, Unicode accent stripping, and `float32`. The vectorizer is fit on training data only and is not refit when the final classifier trains on training plus validation.
+
+**Classifier:** `LinearSVC(C=1, class_weight="balanced", dual="auto", max_iter=10000, random_state=42)`. C was selected by validation macro-F1 from `[0.1, 1, 4, 10, 20, 50, 100]`, using accuracy to break ties.
+
+### Held-out test metrics
+
+| Metric | Result |
+|---|---:|
+| Accuracy | 0.9888 |
+| Macro precision | 0.9875 |
+| Macro recall | 0.9868 |
+| Macro F1 | 0.9872 |
+| Majority-class accuracy | 0.6791 |
+
+Confusion matrix (rows = true class, columns = predicted class; order = human, ChatGPT):
+
+| | Predicted human | Predicted ChatGPT |
+|---|---:|---:|
+| True human | 8,514 | 65 |
+| True ChatGPT | 76 | 3,977 |
+
+### Per-domain test results
+
+| Domain | Answers | Accuracy | Macro F1 |
+|---|---:|---:|---:|
+| Finance | 1,283 | 0.9906 | 0.9906 |
+| Medicine | 388 | 0.9974 | 0.9974 |
+| Open Q&A | 710 | 0.9437 | 0.9274 |
+| Reddit ELI5 | 9,997 | 0.9933 | 0.9911 |
+| Wikipedia CS | 254 | 0.9173 | 0.9172 |
+
+### Findings and limitations
+
+Linear SVM made 141 test errors: 65 human answers classified as ChatGPT and 76 ChatGPT answers classified as human. Results are lower on Open Q&A and Wikipedia CS than on the larger Reddit ELI5 group.
+
+A validation-only comparison tested class weighting against random downsampling of human training answers, using the same C values and shared vectorizer. Both selected `C=1`. Downsampling used 18,799 answers per class with seed 42 and `class_weight=None`; validation and test files were unchanged.
+
+| Approach | Validation macro F1 | Human recall | ChatGPT recall |
+|---|---:|---:|---:|
+| Class weighting | 0.9873 | 0.9944 | 0.9774 |
+| Downsampling | 0.9835 | 0.9878 | 0.9812 |
+
+Class weighting retained the higher validation macro-F1 and remains the saved final model. Downsampling detected more ChatGPT answers but incorrectly flagged more human answers.
+
+The earlier model entries above report different split sizes and TF-IDF fitting procedures, so their recorded scores are not directly comparable to this run. These results measure HC3 performance; they do not establish generalization to newer AI writing. The same test split has been evaluated during development.
+
 ## Other classical models
 
-Add Linear SVM and Multinomial Naive Bayes results here using the same split, target labels, TF-IDF settings, metric definitions, and confusion-matrix class order.
+Add Multinomial Naive Bayes results here using the same split, target labels, TF-IDF settings, metric definitions, and confusion-matrix class order.
