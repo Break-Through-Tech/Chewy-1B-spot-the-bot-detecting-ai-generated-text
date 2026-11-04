@@ -1,0 +1,13 @@
+model,generator,n,metric,rate
+Embeddings Logistic Regression,human,150,human_false_positive_rate,0.17333333333333334
+Embeddings Logistic Regression,chatgpt,150,ai_recall,0.29333333333333333
+Embeddings Logistic Regression,claude,150,ai_recall,0.32
+Embeddings Logistic Regression,gemini,150,ai_recall,0.09333333333333334
+Embeddings Linear SVM,human,150,human_false_positive_rate,0.18666666666666668
+Embeddings Linear SVM,chatgpt,150,ai_recall,0.26
+Embeddings Linear SVM,claude,150,ai_recall,0.32
+Embeddings Linear SVM,gemini,150,ai_recall,0.10666666666666667
+Embeddings FFNN,human,150,human_false_positive_rate,0.12
+Embeddings FFNN,chatgpt,150,ai_recall,0.18
+Embeddings FFNN,claude,150,ai_recall,0.15333333333333332
+Embeddings FFNN,gemini,150,ai_recall,0.06

@@ -15,6 +15,8 @@ data/processed/*.joblib
 models/tfidf/*.joblib
 models/tfidf/*.keras
 models/embeddings/*.npy
+models/embeddings/*.keras
+models/embeddings/*.joblib
 
 .idea/*
 docs/nn-model-experiments.md
