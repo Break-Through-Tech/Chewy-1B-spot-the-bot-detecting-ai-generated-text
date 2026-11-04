@@ -9,7 +9,7 @@ TF-IDF Linear SVM,claude,150,ai_recall,0.0933333333333333
 TF-IDF Linear SVM,gemini,150,ai_recall,0.0
 TF-IDF FFNN,human,150,human_false_positive_rate,0.0
 TF-IDF FFNN,chatgpt,150,ai_recall,0.04
-TF-IDF FFNN,claude,150,ai_recall,0.0266666666666666
+TF-IDF FFNN,claude,150,ai_recall,0.0333333333333333
 TF-IDF FFNN,gemini,150,ai_recall,0.0
 Embeddings Logistic Regression,human,150,human_false_positive_rate,0.1733333333333333
 Embeddings Logistic Regression,chatgpt,150,ai_recall,0.2933333333333333
@@ -19,7 +19,7 @@ Embeddings Linear SVM,human,150,human_false_positive_rate,0.1866666666666666
 Embeddings Linear SVM,chatgpt,150,ai_recall,0.26
 Embeddings Linear SVM,claude,150,ai_recall,0.32
 Embeddings Linear SVM,gemini,150,ai_recall,0.1066666666666666
-Embeddings FFNN,human,150,human_false_positive_rate,0.12
-Embeddings FFNN,chatgpt,150,ai_recall,0.18
+Embeddings FFNN,human,150,human_false_positive_rate,0.0866666666666666
+Embeddings FFNN,chatgpt,150,ai_recall,0.1133333333333333
 Embeddings FFNN,claude,150,ai_recall,0.1533333333333333
-Embeddings FFNN,gemini,150,ai_recall,0.06
+Embeddings FFNN,gemini,150,ai_recall,0.04
