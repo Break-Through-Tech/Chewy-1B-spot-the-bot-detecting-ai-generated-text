@@ -1,43 +1,36 @@
 # Data
 
-We do **not** commit the full dataset (~147 MB) to this public repo. Pull it from
-Hugging Face with the script here, and use the small committed preview to see the
-structure first.
+We do **not** commit the full HC3 dataset (about 147 MB) to this public repo. Pull the raw combined dataset with the script here and use the small committed preview to inspect its structure first.
 
 | File | What it is |
 |------|------------|
-| `hc3_sample.csv` | A **committed** 42-row preview (balanced human/AI across all 5 domains) so you can inspect the format without downloading anything. Real HC3 rows, already "exploded" (one answer per row). |
-| `download_hc3.py` | Pulls the **raw** full HC3 from Hugging Face and saves it as `hc3_all.csv`, exactly as published (no cleaning). Not committed — you generate it. |
-| `hc3_all.csv` | The full **raw** dataset (one row per question) **you create** by running the script. Do your own preprocessing in your notebook. |
+| `hc3_sample.csv` | A committed 42-row preview (balanced human/AI across the five domains), already expanded to one answer per row. |
+| `download_hc3.py` | Downloads the pinned HC3 Parquet snapshot's combined `all` file and saves it as `hc3_all.csv`. |
+| `hc3_all.csv` | The generated raw dataset: one row per question, with nested human and ChatGPT answer lists. This file is not committed. |
 
 ## Quick start
 
+From the repository root:
+
 ```bash
-pip install "datasets>=2.14" pandas
-python data/download_hc3.py     # writes data/hc3_all.csv
+python -m pip install "datasets>=2.14" pandas
+python data/download_hc3.py
 ```
 
-> Note: in the raw CSV, `human_answers` / `chatgpt_answers` are saved as
-> stringified lists. Parse a column back with
-> `df["human_answers"].apply(ast.literal_eval)` (`import ast`).
+The script loads only `all/train/0000.parquet` from a fixed Hugging Face commit. The Hub repository also contains a separate Parquet file for each domain; loading the entire repository would include those rows a second time. The script checks the expected 24,322 rows, schema, and unique question IDs before writing the CSV.
 
-Or in Colab, load it directly:
-
-```python
-from datasets import load_dataset
-ds = load_dataset("Hello-SimpleAI/HC3", "all", trust_remote_code=True)
-```
+In the CSV, `human_answers` and `chatgpt_answers` are serialized lists. Parse them with `ast.literal_eval` after importing `ast`.
 
 ## Data dictionary
 
-### Raw HC3 (as it comes from Hugging Face — the `all` config)
+### Raw HC3 (combined `all` file)
 
-One row per **question**. The answer fields are **lists** (a question may have several human answers), which is why we explode them during prep.
+One row per question. The answer fields are lists because a question may have several human answers.
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `id` | string | Row identifier. |
-| `question` | string | The question / prompt that was answered. |
+| `id` | integer | Stable row ID in the pinned snapshot. |
+| `question` | string | Question or prompt that was answered. |
 | `human_answers` | list[string] | One or more human-written answers. |
 | `chatgpt_answers` | list[string] | One or more ChatGPT-generated answers. |
-| `source` | string | Domain: `finance`, `medicine`, `open_qa`, `reddit_eli5`, or `wiki_csai`. (Present only in the `all` config; the per-domain configs omit it because the domain is implied.) |
+| `source` | string | Domain: `finance`, `medicine`, `open_qa`, `reddit_eli5`, or `wiki_csai`. |
