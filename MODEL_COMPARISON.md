@@ -126,6 +126,40 @@ Class weighting retained the higher validation macro-F1 and remains the saved fi
 
 The earlier model entries above report different split sizes and TF-IDF fitting procedures, so their recorded scores are not directly comparable to this run. These results measure HC3 performance; they do not establish generalization to newer AI writing. The same test split has been evaluated during development.
 
-## Other classical models
+## Multinomial Naive Bayes
 
-Add Multinomial Naive Bayes results here using the same split, target labels, TF-IDF settings, metric definitions, and confusion-matrix class order.
+**Data:** 67,232 training answers, 8,417 validation answers, and 8,417 test
+answers from the existing question-grouped split. The test set contains 5,719
+human answers and 2,698 ChatGPT answers. Split membership was taken from the
+saved `train.csv`, `validation.csv`, and `test.csv` question IDs and applied to
+the answer-level `expanded_dataset.csv`.
+
+**Features:** The shared word-level TF-IDF representation was used with
+unigrams and bigrams, `min_df=2`, `max_features=100000`, sublinear term
+frequency, Unicode accent stripping, and `float32`. The vectorizer was fit on
+the training answers and saved as `models/tfidf/tfidf_vectorizer.joblib`.
+Multinomial Naive Bayes requires non-negative features; the generated TF-IDF
+matrices were checked and contained no negative values.
+
+**Classifier:** `MultinomialNB(alpha=0.01, fit_prior=True)`. Smoothing was
+selected by validation macro-F1, with validation accuracy as the tie-breaker,
+from `[0.01, 0.1, 0.5, 1.0, 2.0, 5.0, 10.0]`. The final classifier was fit on
+training plus validation answers and saved to
+`models/tfidf/multinomial_naive_bayes.joblib`.
+
+### Held-out test metrics
+
+| Metric | Result |
+|---|---:|
+| Accuracy | 0.9511 |
+| Macro precision | 0.9502 |
+| Macro recall | 0.9367 |
+| Macro F1 | 0.9430 |
+| Majority-class accuracy | 0.6791 |
+
+Confusion matrix (rows = true class, columns = predicted class; order = human, ChatGPT):
+
+|  | Predicted human | Predicted ChatGPT |
+|---|---:|---:|
+| True human | 5,586 | 133 |
+| True ChatGPT | 279 | 2,419 |
