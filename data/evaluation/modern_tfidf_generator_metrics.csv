@@ -9,5 +9,5 @@ TF-IDF Linear SVM,claude,150,ai_recall,0.09333333333333334
 TF-IDF Linear SVM,gemini,150,ai_recall,0.0
 TF-IDF FFNN,human,150,human_false_positive_rate,0.0
 TF-IDF FFNN,chatgpt,150,ai_recall,0.04
-TF-IDF FFNN,claude,150,ai_recall,0.02666666666666667
+TF-IDF FFNN,claude,150,ai_recall,0.03333333333333333
 TF-IDF FFNN,gemini,150,ai_recall,0.0
