@@ -19,5 +19,4 @@ models/embeddings/*.keras
 models/embeddings/*.joblib
 
 .idea/*
-docs/nn-model-experiments.md
 
