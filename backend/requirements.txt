@@ -1,0 +1,7 @@
+# For repeatable deployment, replace ranges with tested exact versions and commit a lock file.
+fastapi>=0.115,<1
+uvicorn[standard]>=0.30,<1
+numpy>=1.26,<3
+scikit-learn>=1.5,<2
+joblib>=1.4,<2
+tensorflow>=2.18,<3
