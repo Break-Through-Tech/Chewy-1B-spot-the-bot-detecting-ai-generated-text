@@ -1,0 +1,2 @@
+model,accuracy,macro_precision,macro_recall,macro_f1,roc_auc,human_false_positive_rate
+RoBERTa,0.32,0.611834876785434,0.5422222222222223,0.2989369501466276,0.7087555555555556,0.013333333333333334

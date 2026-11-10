@@ -1,0 +1,25 @@
+{
+    "experiment": "roberta_384_10k",
+    "max_length": 384,
+    "training_samples": 10000,
+    "validation_samples": 2000,
+    "metrics": {
+        "eval_loss": 0.05260973423719406,
+        "eval_accuracy": 0.9925,
+        "eval_macro_f1": 0.9914289412085364,
+        "eval_human_recall": 0.9897058823529412,
+        "eval_ai_recall": 0.9984375,
+        "eval_human_fpr": 0.010294117647058823,
+        "eval_roc_auc": 0.9998368566176471
+    },
+    "confusion_matrix": [
+        [
+            1346,
+            14
+        ],
+        [
+            1,
+            639
+        ]
+    ]
+}

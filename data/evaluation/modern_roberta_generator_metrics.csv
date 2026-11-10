@@ -1,0 +1,5 @@
+model,generator,n,metric,rate,actual_ai,predicted_ai,avg_ai_score
+RoBERTa,chatgpt,150,ai_recall,0.09333333333333334,150,14,0.09411705
+RoBERTa,claude,150,ai_recall,0.18666666666666668,150,28,0.17041862
+RoBERTa,gemini,150,ai_recall,0.013333333333333334,150,2,0.013259992
+RoBERTa,human,150,human_false_positive_rate,0.013333333333333334,0,2,0.013998149
