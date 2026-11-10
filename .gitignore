@@ -18,5 +18,24 @@ models/embeddings/*.npy
 models/embeddings/*.keras
 models/embeddings/*.joblib
 
+# RoBERTa model weights and binary artifacts
+models/roberta/**/*.safetensors
+models/roberta/**/*.bin
+models/roberta/**/*.pt
+models/roberta/**/*.pth
+models/roberta/**/*.ckpt
+
+# Hugging Face tokenizer artifacts
+models/roberta/**/tokenizer.json
+models/roberta/**/vocab.json
+models/roberta/**/merges.txt
+
+# Intermediate training checkpoints
+models/roberta/**/checkpoint-*/
+
+# Training logs and temporary artifacts
+models/roberta/**/runs/
+models/roberta/**/events.out.tfevents.*
+
 .idea/*
 

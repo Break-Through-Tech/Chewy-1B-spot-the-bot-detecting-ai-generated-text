@@ -1,0 +1,19 @@
+{
+    "accuracy": 0.9919911188644834,
+    "macro_f1": 0.9908485534901093,
+    "human_fpr": 0.011074842620657496,
+    "roc_auc": 0.999827778949107,
+    "confusion_matrix": [
+        [
+            8483,
+            95
+        ],
+        [
+            6,
+            4027
+        ]
+    ],
+    "training_examples": 58823,
+    "validation_examples": 12611,
+    "max_length": 384
+}
