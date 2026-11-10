@@ -15,9 +15,8 @@ requests~=2.34.2
 scipy~=1.18.1
 sentence-transformers~=5.6.0
 
-
-# for RoBERTa
+# RoBERTa
 torch==2.9.1
-transformers==4.57.6
-tokenizers==0.22.2
+transformers==5.22.2
+tokenizers>=0.23.1,<0.24.0
 accelerate
