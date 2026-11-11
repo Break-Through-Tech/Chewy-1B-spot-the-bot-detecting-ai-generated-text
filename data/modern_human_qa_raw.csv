@@ -800,14 +800,16 @@ but not for others: 273 K + 273 K is nonsensical. Length (m) is an extensive pro
 <p>One story about GPS, which may or may not be true, is that there was debate among the design engineers about whether the general relativistic corrections were actually necessary.  The first generation of satellites were therefore launched with the ability to run the onboard atomic clocks with or without the GR correction.  Without the GR correction, the system didn't work at all.</p>
 <p>You can kind of see this from the Van Baak result.  The speed of light is about one foot per nanosecond, so the error introduced by ignoring general relativity is about twenty feet per weekend per mountaintop.  The altitude of a GPS satellite is many mountaintops, and GPS has been running for many, many weekends, and yet a precision of tens of feet is still quite achievable.</p>
 ",45,1789411174,True
-842619,Can an object moving fast enough away from a stationary observer redshift out of the visible spectrum?,"<p>I ran some numbers using the relativistic longitudinal Doppler effect formula
-<span class=""math-container"">$$\lambda_r = \sqrt{\frac{1+\beta}{1-\beta}}\cdot\lambda_s$$</span>
-where <span class=""math-container"">$\lambda_s$</span> and <span class=""math-container"">$\lambda_r$</span> are source and received wavelengths respectively, and <span class=""math-container"">$\beta = v/c$</span>. Then I plugged in the wavelength of a red laser (630 nm) for <span class=""math-container"">$\lambda_s$</span> and solved for <span class=""math-container"">$v$</span>, which gave me a result of <span class=""math-container"">$v=0.238c$</span> for the recieved wavelength to enter infrared territory, which doesn't seem that high (even though it's more than 20% lightspeed). So I would like to know if something like this has ever been observed or if it's even plausible.</p>
-",17,1,1739344191,"['special-relativity', 'doppler-effect']",science,physics,"<p>Yes, of course. That is one of the main reasons that the James Webb Space Telescope focuses on the infrared part of the spectrum - galaxies at high redshift emit very little light in the visible part of the spectrum.</p>
-<p>The redshift (in astronomy) <span class=""math-container"">$z$</span> is defined such that (in your terminology)
-<span class=""math-container"">$$\lambda_r = (1 + z) \lambda_s $$</span></p>
-<p>Galaxies have been found with <span class=""math-container"">$z=10$</span> and upwards now, so for example, an emission line at 630 nm would be observed at 6.93 <span class=""math-container"">$\mu$</span>m.</p>
-",36,1739347956,True
+877343,Why can horsehair worms untie themselves?,"<p>In <a href=""https://www.youtube.com/watch?v=S_U86iHzDuQ"" rel=""noreferrer"">this video</a>, horsehair worms are tied together and appear to untie themselves by wriggling around.</p>
+<p>Having free ends makes untangling possible, but it doesn't explain why wriggling helps — pulling on a knotted string can just tighten it. Can a prescribed pattern of bending reproduce this behavior? What makes the motion loosen the knot rather than tighten it?</p>
+<p><a href=""https://pubmed.ncbi.nlm.nih.gov/27807879/"" rel=""noreferrer"">Horsehair worms have a nervous system, by the way.</a></p>
+<p>It is striking how readily they seem to get free, even when several are tied together. I don't see any similar self-untangling been reproduced with simulated or robotic filaments, using either prescribed movements or learned controllers?</p>
+",18,2,1793409290,"['biophysics', 'biology', 'soft-matter']",science,physics,"<p>If friction is low enough, random motion may eventually unravel any <a href=""https://en.wikipedia.org/wiki/Open_knot_theory"" rel=""noreferrer"">open knot</a>.  The <a href=""https://en.wikipedia.org/wiki/Nematomorpha"" rel=""noreferrer"">horsehair worms</a> in the video are wiggling in water, so their smooth skin is so well lubricated that simply wiggling enough will undo their knots.</p>
+<p>For random motion, unknotting can often be modelled simply as a <a href=""https://en.wikipedia.org/wiki/Self-avoiding_walk"" rel=""noreferrer"">self-avoiding</a> <a href=""https://en.wikipedia.org/wiki/Random_walk"" rel=""noreferrer"">random walk</a> of the knot's crossing points.
+This has been studied in <a href=""https://doi.org/10.48550/arXiv.cond-mat/0012145"" rel=""noreferrer"" title=""Knots and Random Walks in Vibrated Granular Chains”, E. Ben-Naim, Z.A. Daya, P. Vorobieff, and R.E. Ecke, Phys. Rev. Lett. 86 (2001) 1414  https://doi.org/10.1103/PhysRevLett.86.1414"">vibrated granular chains</a> and is easily observed, as shown in the <a href=""https://www.youtube.com/watch?v=zC0fS-g15m0"" rel=""noreferrer"">clip below</a> from the University of Toronto Advanced Undergraduate Physics Lab.</p>
+<p><a href=""https://i.sstatic.net/JpqWLsq2.gif"" rel=""noreferrer""><img src=""https://i.sstatic.net/JpqWLsq2.gif"" alt=""Vibrated chain unknotting"" /></a></p>
+<p>I suspect the horsehair worms unknot faster than a random walk since their muscles can exert forces trying to increase the radius-of-curvature of the knot. This might be an interesting undergraduate biophysics experiment.</p>
+",19,1793480252,False
 116338,How &quot;close&quot; are genome-edited &quot;de-extinct&quot; animals to their extinct counterparts?,"<p>I'm not a biologist, so I apologize if this question is a bit vague. But since it's currently a highly discussed topic in the media, I’d really like to understand it better — and I imagine others might be wondering about the same thing.</p>
 <p>In recent years, there have been increasing reports of attempts on the &quot;<a href=""https://en.wikipedia.org/wiki/De-extinction"" rel=""noreferrer"">de-extinction</a>&quot; of species using techniques from biotechnology. While earlier efforts like the <a href=""https://en.wikipedia.org/wiki/Pyrenean_ibex#Cloning_project"" rel=""noreferrer"">cloning of the Pyrenean ibex</a> or the human-assistet germination of the <a href=""https://en.wikipedia.org/wiki/Judean_date_palm"" rel=""noreferrer"">Judean palm</a> relied on preserved cells, modern approaches appear to focus more on genome editing, of course, due to the fact that it is quite rare to have preserved cells as in the examples just mentioned.</p>
 <p>Two recent examples from <a href=""https://colossal.com/"" rel=""noreferrer"">Colossal Biosciences</a> in particular caused high media attention:</p>
@@ -1224,7 +1226,7 @@ By Didier Descouens - CC BY-SA 4.0</p>
 <p>I was wondering what kind of organism this is. Is it a fungus? Or even a slime mold? The body was about 1cm long. Its currently November and about 13°C cold. An image search with iNaturalist didn't provide any conclusive result.</p>
 ",7,1,1762676153,"['species-identification', 'mycology']",biology,biology,"<p>I think that this is extruded resin from the tree, probably coming out of an injury site, perhaps where an insect has burrowed into the tree.</p>
 <p>The reason I think so is that if you zoom in on your first photo, you can see lines running parallel to the sides of the &quot;growth&quot; (i.e. along the length, not across), These lines are inconsistent in depth and shape. To me these strongly resemble extrusion marks caused by the shape of the hole the &quot;growth&quot; is coming out of. You find similar marks in such places as on your fingernails - running from cuticle to tip, or if you've played (or baked) with dough of any sort and forced it through a nozzle.</p>
-",13,1762720540,True
+",14,1762720540,True
 119193,Why are pistachios green? There&#39;s no photosynthesis inside the shell,"<p>Most plant matter is green due to the presence of chlorophyll, used for photosynthesis.</p>
 <p>A pistachio in the shell is blocked from light, so it can not do photosynthesis.</p>
 <p>What would the benefit be in making the pistachio green?</p>
@@ -1560,21 +1562,6 @@ Where <span class=""math-container"">$m$</span> is the mass, <span class=""math-
 </li>
 </ol>
 ",4,1743667617,False
-117924,What is this weird looking skeleton? (found in Brittany),"<p>We found this partial skeleton at the beach in northern Brittany. It is around the same size as my hand (~20 cm), but is only a partial skeleton, so the whole animal is likely longer.</p>
-<p>The skeleton seems to be either some kind of head, with some teeth like structure at the end. Though I think it might alternatively be a tail.</p>
-<p><a href=""https://i.sstatic.net/eX1NfrvI.jpg"" rel=""nofollow noreferrer""><img src=""https://i.sstatic.net/eX1NfrvI.jpg"" alt=""enter image description here"" /></a>
-<a href=""https://i.sstatic.net/9QgeErCK.jpg"" rel=""nofollow noreferrer""><img src=""https://i.sstatic.net/9QgeErCK.jpg"" alt=""enter image description here"" /></a>
-<a href=""https://i.sstatic.net/Fb4sdmVo.jpg"" rel=""nofollow noreferrer""><img src=""https://i.sstatic.net/Fb4sdmVo.jpg"" alt=""enter image description here"" /></a>
-<a href=""https://i.sstatic.net/MBl4XEwp.jpg"" rel=""nofollow noreferrer""><img src=""https://i.sstatic.net/MBl4XEwp.jpg"" alt=""enter image description here"" /></a>
-<a href=""https://i.sstatic.net/V0csvUth.jpg"" rel=""nofollow noreferrer""><img src=""https://i.sstatic.net/V0csvUth.jpg"" alt=""enter image description here"" /></a></p>
-",5,1,1757928647,"['species-identification', 'marine-biology']",biology,biology,"<p>It looks as though it might well be some kind of Skate, based on the skull.  These are of course cartilaginous fish, so the rest of the skeleton could well have been eroded or washed away when the connective tissue rotted.</p>
-<p>See photos here:</p>
-<p><a href=""https://i.sstatic.net/wihk205Y.jpg"" rel=""nofollow noreferrer""><img src=""https://i.sstatic.net/wihk205Y.jpg"" alt=""enter image description here"" /></a></p>
-<p>(source: <a href=""https://bestiarumosteo.blogspot.com/2013/12/sharks-skates-and-fish-heads.html"" rel=""nofollow noreferrer"">https://bestiarumosteo.blogspot.com/2013/12/sharks-skates-and-fish-heads.html</a>)</p>
-<p>And main skeleton here, which shows the pointed end of the skull and vertebrae.</p>
-<p><a href=""https://i.sstatic.net/YjiqN6Jx.gif"" rel=""nofollow noreferrer""><img src=""https://i.sstatic.net/YjiqN6Jx.gif"" alt=""enter image description here"" /></a>
-(source: <a href=""https://etc.usf.edu/clipart/48000/48044/48044_skate_skel.htm"" rel=""nofollow noreferrer"">https://etc.usf.edu/clipart/48000/48044/48044_skate_skel.htm</a>)</p>
-",4,1758197148,False
 34490,Does human skin recover better in dry or humid environments?,"<p><strong>The context</strong> <em>(you can skip it - I just wanted to make it clear that I am not looking for any medical advice)</em></p>
 <p>I cut a finger slicing off a part of the skin at the knuckle. There was a little bit of blood but the cut was superficial enough to not hit any larger blood vessels.</p>
 <p>I put on a small bandage (mostly to protect from a touch) and let it go. 1-2 days later it was still very sensitive and the skin seemed to heal slowly. Since it was the hand the bandages were often wet and the wound was in a semi-humid environment (I did not measure it - the kind of environment you get when you wet your hand, and change the bandage 2 times a day because it does not stick anymore).</p>
@@ -3064,10 +3051,10 @@ YFe<sup>3+</sup>Fe<sup>2+</sup>U,Th,Ca)<sub>2</sub>(Nb,Ta)<sub>2</sub>O<sub>8</s
 <li><a href=""https://www.usgs.gov/centers/national-minerals-information-center/fluorspar-statistics-and-information"" rel=""noreferrer"">Fluorspar</a> (Fluorite; calcium fluoride)</li>
 </ul>
 <p>I wonder if there is a geological, chemical, or practical reason why this is so. Surely many/most of the other 48 will be present in the Earth's crust in mineral form as well?</p>
-",6,4,1746145332,"['geochemistry', 'mineralogy', 'mining', 'resources']",general,earthscience,"<p>Most minerals are mined for one or more of their constituent elements, usually one or more of the metals. Minerals that are mined for copper include, but not limited to: chalcocite (Cu<sub>2</sub>S), covellite (CuS), bornite (2Cu<sub>2</sub>S<span class=""math-container"">$\cdot$</span>CuS<span class=""math-container"">$\cdot$</span>Fes), chalcopyrite (CuFeS<sub>2</sub>), malchite (CuCO<sub>3</sub><span class=""math-container"">$\cdot$</span>Cu(OH)<sub>2</sub>) and azurite (2CuCO<sub>3</sub><span class=""math-container"">$\cdot$</span>Cu(OH)<sub>2</sub>).</p>
-<p>Barite and fluorspar are minerals that are not generally mined for any of their component elements. They are mined for how the minerals can be utilized. Barite is usual as a drilling mud when drilling for oil. Similarly fluorspar can be used as flux in smelting.</p>
-<p>All the other elements on the USGS 2022 list are metals or semi metals. Those elements are wanted for their properties as metals or semi metals. When they occur in minerals some of the minerals will be either sulfides or oxides. What matters is that the each specific metal can be extracted from its sulfide or oxide host easily and <strong>economically</strong>. Specific minerals, or mineral types, for each metal are usually not critical.</p>
-",14,1746160973,False
+",6,4,1746145332,"['geochemistry', 'mineralogy', 'mining', 'resources']",general,earthscience,"<p>Most minerals are mined for one or more of their constituent elements; usually one or more of the metals. Minerals that are mined for copper include, but not limited to: chalcocite (Cu<sub>2</sub>S), covellite (CuS), bornite (2Cu<sub>2</sub>S<span class=""math-container"">$\cdot$</span>CuS<span class=""math-container"">$\cdot$</span>Fes), chalcopyrite (CuFeS<sub>2</sub>), malachite (CuCO<sub>3</sub><span class=""math-container"">$\cdot$</span>Cu(OH)<sub>2</sub>) and azurite (2CuCO<sub>3</sub><span class=""math-container"">$\cdot$</span>Cu(OH)<sub>2</sub>).</p>
+<p>Barite and fluorspar are minerals that are not generally mined for any of their component elements. They are mined for how the minerals can be utilized. Barite is used as a drilling mud when drilling for oil. Similarly, fluorspar can be used as flux in smelting.</p>
+<p>All the other elements on the USGS 2022 list are metals or semi metals. Those elements are wanted for their properties as metals or semi metals. When they occur in minerals, some of the minerals will be either sulfides or oxides. What matters is that each specific metal can be extracted from its sulfide or oxide host easily and <strong>economically</strong>. Specific minerals, or mineral types, for each metal are usually not critical.</p>
+",14,1746160973,True
 27009,What’s the smallest form a rock can get?,"<p>I've recently developed an interest in rock weathering and I'm curious about the smallest possible particle a rock can form. I understand it can turn into ions through a process, but can it break down into something even smaller?</p>
 ",6,4,1750389884,['rocks'],general,earthscience,"<p>Rock is defined as solid material which is not ice or other volatile materials like CO or CO<sub>2</sub>.</p>
 <p>That implies that anything ionized cannot be considered rock any longer - and the border to &quot;being rock&quot; is IMHO already above that. Of course you can break down any matter into its constituents in a heavy ion collider like LHC at CERN - but matter would have lost its relation to &quot;rockiness&quot; at the stage it got ionized and either molten, evaporated and/or ionized.</p>
@@ -3591,19 +3578,3 @@ explained by the fact that Nantes is just upstream of the mouth of the Loire,
 where the river widens significantly. It is plausible that a sudden change in
 the cross section of the river exaggerates influences of currents and wind.</p>
 ",1,1740316208,False
-26900,Calculating concentration changes from emission changes,"<p><a href=""https://i.sstatic.net/Wi2FVYnw.png"" rel=""nofollow noreferrer""><img src=""https://i.sstatic.net/Wi2FVYnw.png"" alt=""enter image description here"" /></a>I am trying to do some maths on some data from a climate model. I am trying to calculate changes in atmospheric methane concentrations from changes in emissions using this equation from Thornhill et al 2021 &quot;Climate-driven chemistry and aerosol feedbacks in CMIP6 Earth system models&quot; as I am following their method but I am confused how to get a value in ppb from this or what exactly M(atm) represents in this equation.</p>
-",3,1,1744113092,"['climate-change', 'climate-models', 'atmosphere-modelling', 'methane']",general,earthscience,"<p>In that equation <span class=""math-container"">$M_{atm}$</span> is the mass of the atmosphere.  You can rearrange that equation into a, perhaps, more intuitive form:</p>
-<p><span class=""math-container"">$$
-\Delta C = \left(\frac{\Delta E \, \tau \, f}{m_{CH4}}\right) / \left( \frac{M_{atm}}{m_{air}}\right) \\
-= \text{mols CH4} / \text{mols air}
-$$</span></p>
-<p>which is the molar mixing ratio for the entire atmosphere.</p>
-<p>Taking some example numbers: the change in emission rate <span class=""math-container"">$E$</span> from 2000 to 2018 is <em>very approximately</em> <span class=""math-container"">$\Delta E = 100$</span> Tg CH4 / y; and <span class=""math-container"">$M_{atm} = 5.1 \times 10^{21}$</span> g, gives,</p>
-<p><span class=""math-container"">$$
-\Delta C = \left(\frac{100 \times 10^{12} \, 9.1 \, 1.34}{16}\right) / \left(\frac{5.1 \times 10^{21}}{28.97}\right) \\
-= 17.475 \times 10^{12} / 1.76 \times 10^{20} \\
-\approx 100 \times 10^{-9} \\
-= 100~\text{ppb}
-$$</span></p>
-<p>That agrees with the <em>approximate</em> observed atmospheric CH4 increase over that period of 1760 to 1860 ppb.</p>
-",2,1744277542,False
