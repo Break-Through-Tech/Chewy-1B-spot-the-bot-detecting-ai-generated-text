@@ -68,51 +68,47 @@ export default function SampleTexts({
         </p>
       </div>
 
-      {/* Question selector */}
-      <div className="mb-4">
-        <label
-          htmlFor="sample-question"
-          className="mb-2 block text-sm font-medium"
-        >
-          Choose a question
-        </label>
-
-        <select
-          id="sample-question"
-          value={selectedQuestionId}
-          onChange={(e) =>
-            changeQuestion(Number(e.target.value))
-          }
-          className="w-full rounded-xl border
-            border-gray-200 bg-white px-4 py-3
-            text-sm text-gray-900"
-        >
-          {sampleQuestions.map((q, index) => (
-            <option key={q.id} value={q.id}>
-              {String(index + 1).padStart(2, "0")}
-              {" — "}
-              {q.question}
-            </option>
-          ))}
-        </select>
-      </div>
-
       {/* Notebook container */}
       <div className="overflow-hidden rounded-2xl
         border border-gray-200 bg-white text-gray-900">
 
-        {/* Question stays visible on both tabs */}
+        {/* Question selector */}
         <div className="border-b border-gray-200
           bg-gray-50 p-5 sm:p-6">
 
-          <span className="text-xs font-semibold
-            uppercase tracking-widest text-gray-500">
-            Question
-          </span>
+          <label
+            htmlFor="sample-question"
+            className="mb-2 block text-xs
+              font-semibold uppercase
+              tracking-widest text-gray-500"
+          >
+            Choose a question
+          </label>
 
-          <h3 className="mt-2 text-lg font-semibold">
-            {question.question}
-          </h3>
+          <select
+            id="sample-question"
+            value={selectedQuestionId}
+            onChange={(e) =>
+              changeQuestion(Number(e.target.value))
+            }
+            className="w-full appearance-none
+              rounded-xl border border-gray-200
+              bg-white bg-no-repeat py-3
+              pl-4 pr-12 text-sm font-semibold
+              text-gray-900"
+            style={{
+              backgroundImage:
+                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
+              backgroundPosition: "right 1rem center",
+              backgroundSize: "1rem",
+            }}
+          >
+            {sampleQuestions.map((q) => (
+              <option key={q.id} value={q.id}>
+                {q.question}
+              </option>
+            ))}
+          </select>
 
           <p className="mt-2 text-xs text-gray-500">
             HC3 · Test set · Question {question.id}
@@ -225,22 +221,24 @@ export default function SampleTexts({
                 {copied ? "Copied!" : "Copy"}
               </button>
             </div>
-            <p className="text-3xl font-serif mt-4">"</p>
+            <p className="mt-3 font-serif text-3xl
+              leading-none">
+              &quot;
+            </p>
             {/* Full answer — no truncation */}
-            <p className="min-h-28 whitespace-pre-wrap
+            <p className="mt-2 whitespace-pre-wrap
               text-sm italic leading-6 text-gray-700">
               {answer.text}
             </p>
-            <p className="text-3xl font-serif mb-4 text-right">"</p>
+            <p className="mt-1 mb-1 text-right
+              font-serif text-3xl leading-none">
+              &quot;
+            </p>
 
             {/* Footer */}
-            <div className="mt-5 flex items-center
-              justify-between gap-3 border-t
-              border-gray-100 pt-4">
-
-              <span className="text-xs text-gray-500">
-                {answer.text.length} characters
-              </span>
+            <div className="mt-2 flex
+              justify-end gap-3 border-t
+              border-gray-100 pt-3">
 
               <button
                 type="button"
@@ -273,7 +271,7 @@ export default function SampleTexts({
       </div>
 
       {/* Dataset context */}
-      <p className="w-lg mx-auto mt-4 text-xs leading-relaxed
+      <p className="mt-4 text-xs leading-relaxed
         text-gray-500 uppercase">
         These examples come from our HC3 test dataset.
         The displayed source labels are known dataset

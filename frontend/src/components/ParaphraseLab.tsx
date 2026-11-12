@@ -20,9 +20,6 @@ export default function ParaphraseLab() {
   const [level, setLevel] =
     useState<ParaphraseLevel>(0);
 
-  const [copied, setCopied] = useState(false);
-  const [copyError, setCopyError] = useState("");
-
   const sample =
     paraphraseSamples.find(
       (item) => item.id === selectedId
@@ -55,36 +52,15 @@ export default function ParaphraseLab() {
 
   function changeLevel(value: ParaphraseLevel) {
     setLevel(value);
-    setCopied(false);
-    setCopyError("");
   }
 
   function changeSample(id: string) {
     setSelectedId(id);
     setLevel(0);
-    setCopied(false);
-    setCopyError("");
-  }
-
-  async function copyText() {
-    try {
-      await navigator.clipboard.writeText(
-        current.text
-      );
-
-      setCopied(true);
-      setCopyError("");
-    } catch {
-      setCopied(false);
-      setCopyError("Unable to copy this passage.");
-    }
   }
 
   return (
-    <section
-      id="paraphrase-lab"
-      className="mt-12"
-    >
+    <section id="paraphrase-lab">
       {/* Section heading */}
       <div className="mb-6">
         <h2 className="text-2xl font-bold">
@@ -103,6 +79,11 @@ export default function ParaphraseLab() {
         border-gray-200 bg-white p-5
         text-gray-900 sm:p-6">
 
+        <div className="grid items-start gap-6
+          lg:grid-cols-2">
+
+        <div className="min-w-0">
+
         {/* Sample selector */}
         <label
           htmlFor="paraphrase-sample"
@@ -117,9 +98,16 @@ export default function ParaphraseLab() {
           onChange={(e) =>
             changeSample(e.target.value)
           }
-          className="w-full rounded-xl border
-            border-gray-200 bg-gray-50
-            px-4 py-3 text-sm"
+          className="w-full appearance-none
+            rounded-xl border border-gray-200
+            bg-gray-50 bg-no-repeat py-3
+            pl-4 pr-12 text-sm"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
+            backgroundPosition: "right 1rem center",
+            backgroundSize: "1rem",
+          }}
         >
           {paraphraseSamples.map((item) => (
             <option key={item.id} value={item.id}>
@@ -205,51 +193,28 @@ export default function ParaphraseLab() {
           border-gray-200 bg-gray-50 p-4
           sm:p-5">
 
-          <div className="flex items-center
-            justify-between gap-3">
-
-            <span className="text-xs font-semibold
-              uppercase tracking-wider text-gray-500">
-              {current.label} passage
-            </span>
-
-            <button
-              type="button"
-              onClick={copyText}
-              className="rounded-lg border
-                border-gray-200 bg-white px-3 py-1.5
-                text-xs font-medium hover:bg-gray-100"
-            >
-              {copied ? "Copied!" : "Copy"}
-            </button>
-          </div>
+          <span className="text-xs font-semibold
+            uppercase tracking-wider text-gray-500">
+            {current.label} passage
+          </span>
 
           <p
             aria-live="polite"
-            className="mt-4 min-h-32 whitespace-pre-wrap
+            className="mt-4 whitespace-pre-wrap
               text-sm leading-6 text-gray-700"
           >
             {current.text}
           </p>
-
-          <p className="mt-3 text-xs text-gray-400">
-            {current.text.length} characters
-          </p>
-
-          {copyError && (
-            <p
-              role="alert"
-              className="mt-2 text-xs text-red-700"
-            >
-              {copyError}
-            </p>
-          )}
         </div>
+
+        </div>
+
+        <div className="min-w-0">
 
         {/* Live prediction card */}
         <div
           aria-live="polite"
-          className={`mt-5 rounded-xl border
+          className={`rounded-xl border
             p-5 transition-colors duration-300 ${
               isAI
                 ? "border-blue-50 bg-[#8D9CF2]/10"
@@ -345,6 +310,10 @@ export default function ParaphraseLab() {
           onChangeLevel={changeLevel}
         />
 
+        </div>
+
+        </div>
+
         {/* Explanation */}
         <p className="mt-6 text-xs
           leading-relaxed text-gray-500">
@@ -370,7 +339,7 @@ function ScoreChart({
   onChangeLevel,
 }: ScoreChartProps) {
   return (
-    <div className="mt-8 border-t
+    <div className="mt-6 border-t
       border-gray-200 pt-6">
 
       <h3 className="font-semibold">
