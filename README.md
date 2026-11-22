@@ -34,13 +34,75 @@ This project explores how to distinguish human-written text from ChatGPT-generat
 
 ## 👩🏽‍💻 **Setup and Installation**
 
-**Provide step-by-step instructions so someone else can run your code and reproduce your results. Depending on your setup, include:**
+### Prepare the data and notebooks
 
-* How to clone the repository
-* How to install dependencies
-* How to set up the environment
-* How to access the dataset(s)
-* How to run the notebook or scripts
+1. Install Python 3.12 and clone the repository:
+
+   ```bash
+   git clone https://github.com/Break-Through-Tech/Chewy-1B-spot-the-bot-detecting-ai-generated-text.git
+   cd Chewy-1B-spot-the-bot-detecting-ai-generated-text
+   ```
+
+2. From the repository root, create an environment and install the project packages:
+
+   ```bash
+   python3.12 -m venv .venv
+   source .venv/bin/activate
+   python -m pip install --upgrade pip
+   python -m pip install -r requirements.txt
+   ```
+
+3. Download the full HC3 corpus (about 147 MB):
+
+   ```bash
+   python data/download_hc3.py
+   ```
+
+   The script writes `data/hc3_all.csv`. The raw file is generated locally and is not committed.
+4. Run data preparation first. From the repository root, start Jupyter in the data notebook folder:
+
+   ```bash
+   cd notebooks/data
+   jupyter lab
+   ```
+
+   Run `data_cleaning.ipynb`, then `dataset_splitting.ipynb`.
+5. For modeling and evaluation, start Jupyter from the relevant folder (the notebooks use paths relative to their folder):
+
+   ```bash
+   cd notebooks/tfidf        # or notebooks/embeddings, notebooks/evaluation
+   jupyter lab
+   ```
+
+### Run the demo locally
+
+The model artifacts are included in `backend/models/`.
+
+1. In a terminal, install and start the FastAPI backend:
+
+   ```bash
+   cd backend
+   python3.12 -m venv .venv
+   source .venv/bin/activate
+   python -m pip install --upgrade pip
+   python -m pip install -r requirements.txt
+   uvicorn app.main:app --reload --port 8000
+   ```
+
+2. In another terminal, configure and start the Next.js frontend:
+
+   ```bash
+   cd frontend
+   cat > .env.local <<'EOF'
+   FASTAPI_URL=http://127.0.0.1:8000
+   EOF
+   npm ci
+   npm run dev
+   ```
+
+3. Open <http://localhost:3000>. The backend health check and interactive API docs are at <http://127.0.0.1:8000/health> and <http://127.0.0.1:8000/docs>.
+
+The model returns an experimental score, not proof of authorship. See [backend setup and deployment notes](backend/README.md) for service configuration.
 
 ---
 
