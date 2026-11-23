@@ -169,9 +169,9 @@ These patterns describe our dataset; no single pattern proves that an answer was
 
 ### Models and Architectures
 
-- **Classical ML:** Trained Logistic Regression (baseline), Linear SVM, K-Nearest Neighbors (KNN), and Multinomial Naive Bayes classifiers using TF-IDF features.
-- **Feed-Forward Neural Networks:** Developed dense neural networks using TF-IDF features and pretrained sentence embeddings.
-- **Sentence Embedding Models:** Trained Logistic Regression, Linear SVM, and FFNN classifiers using pretrained sentence representations.
+- **Classical Machine Learning:** Trained Logistic Regression (baseline), Linear SVM, K-Nearest Neighbors (KNN), and Multinomial Naive Bayes classifiers using TF-IDF features.
+- **Feedforward Neural Networks:** Developed and evaluated dense neural networks using TF-IDF features and pretrained sentence embeddings.
+- **Sentence Embedding Experiments:** Replaced TF-IDF features with pretrained sentence embeddings to evaluate Logistic Regression, Linear SVM, and FFNN classifiers, comparing how different text representations influence classification performance.
 - **Transformer:** Fine-tuned RoBERTa (`roberta-base`) for binary text classification. The resulting model is published on Hugging Face: [Spot the Bot RoBERTa](https://huggingface.co/akeight/spot-the-bot-roberta).
 
 ### Feature Engineering and Text Representations
