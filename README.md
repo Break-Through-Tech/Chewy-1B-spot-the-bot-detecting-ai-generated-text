@@ -37,6 +37,10 @@ Beyond classification accuracy, we investigated how well these models generalize
 
 - Built a lightweight, full-stack web application using Next.js and FastAPI to demonstrate AI-generated text detection through an interactive interface.
 
+<p align="center">
+  <img src="./docs/images/demo.png" alt="Spot the Bot web application showing the interactive sample notebook" width="850">
+</p>
+
 ---
 
 ## 👩🏽‍💻 **Setup and Installation**
