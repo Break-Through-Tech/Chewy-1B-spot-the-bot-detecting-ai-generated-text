@@ -199,15 +199,145 @@ These patterns describe our dataset; no single pattern proves that an answer was
 
 ## 📈 **Results & Key Findings**
 
-**You might consider describing the following (as applicable):**
+### HC3 Held-Out Test Set Performance
 
-* Performance metrics (e.g., Accuracy, F1 score, RMSE)
-* How your model performed
-* Insights from evaluating model fairness
+All nine trained classifiers were evaluated on the same held-out HC3 test set (12,632 responses). Results reflect the original saved models and decision rules.
 
-**Potential visualizations to include:**
+| Model | Feature Type |   Accuracy |   Macro F1 |    ROC-AUC | Human Recall | AI Recall | Human FPR |
+|---|---|-----------:|-----------:|-----------:|---:|---:|---:|
+| RoBERTa | Transformer | **99.27%** | **0.9917** | **0.9999** | 98.94% | 99.98% | 1.06% |
+| TF-IDF FFNN | TF-IDF |     98.95% |     0.9879 |     0.9994 | 99.23% | 98.35% | 0.77% |
+| TF-IDF Linear SVM | TF-IDF |     98.88% |     0.9872 |     0.9992 | 99.24% | 98.12% | 0.76% |
+| TF-IDF Logistic Regression | TF-IDF |     98.73% |     0.9854 |     0.9991 | 99.06% | 98.03% | 0.94% |
+| TF-IDF Multinomial NB | TF-IDF |     95.04% |     0.9423 |     0.9865 | 97.44% | 89.96% | 2.56% |
+| TF-IDF KNN | TF-IDF |     93.41% |     0.9260 |     0.9837 | 93.19% | 93.88% | 6.81% |
+| Embeddings FFNN | Sentence Embeddings |     92.42% |     0.9141 |     0.9785 | 93.29% | 90.60% | 6.71% |
+| Embeddings Linear SVM | Sentence Embeddings |     86.35% |     0.8494 |     0.9403 | 86.13% | 86.82% | 13.87% |
+| Embeddings Logistic Regression | Sentence Embeddings |     85.93% |     0.8448 |     0.9360 | 85.76% | 86.31% | 14.24% |
 
-* Confusion matrix, precision-recall curve, feature importance plot, prediction distribution, outputs from fairness or explainability tools
+
+**ROC Curves — HC3 Held-Out Test Set**
+
+![ROC curves comparing all nine classifiers on the HC3 held-out test set](./docs/images/results/hc3_roc_curves.png)
+
+**Understanding ROC Curves and ROC-AUC:** ROC curves show how well a model distinguishes between human-written and AI-generated text across different classification thresholds. Each curve illustrates the trade-off between correctly detecting AI-generated responses and incorrectly labeling human-written responses as AI. ROC-AUC summarizes this performance into a single score, where 1.0 represents perfect separation and 0.5 is equivalent to random guessing. Curves closer to the top-left corner indicate stronger performance. On the HC3 test set, most models achieved exceptionally high ROC-AUC scores, indicating they could effectively distinguish between the two classes.
+
+
+**Key findings:**
+- RoBERTa achieved the highest overall test accuracy (99.27%) and macro F1 (0.9917).
+- The TF-IDF FFNN was the strongest non-transformer model, reaching 98.95% accuracy.
+- Traditional TF-IDF classifiers performed competitively with the substantially larger transformer model.
+- Human false-positive rate (FPR) measures the percentage of human-written responses incorrectly classified as AI-generated.
+
+**Source:** [HC3 model comparison notebook](notebooks/evaluation/hc3_model_comparison.ipynb) | [Saved test metrics](data/evaluation/hc3_model_metrics.csv)
+
+
+### Modern External Dataset Evaluation
+
+Seven classifiers were evaluated on an independent dataset of 600 modern responses from human writers and three AI generators: ChatGPT, Claude, and Gemini.
+
+This experiment assesses generalization beyond the original HC3 training distribution.
+
+
+![Comparison of model macro F1 scores on HC3 and modern external data](./docs/images/results/hc3_vs_modern_macro_f1.png)
+
+**Understanding the comparison:** This chart shows how well each model identifies human-written versus AI-generated text on two different datasets. Macro F1 measures how well a model balances correct predictions across both categories, with scores closer to 1.0 indicating better performance. While the models performed exceptionally well on the original HC3 test set, their scores dropped significantly when evaluated on newer AI-generated responses from ChatGPT, Claude, and Gemini. This demonstrates **dataset distribution shift**: patterns the models learned from older examples did not transfer reliably to newer content.
+
+| Model | Accuracy | Macro F1 | ROC-AUC | Human FPR | AI Recall |
+|---|---:|---:|---:|---:|---:|
+| RoBERTa | 32.00% | 0.2989 | 0.7088 | 1.33% | 9.78% |
+| TF-IDF FFNN | 26.83% | 0.2268 | **0.8574** | **0.00%** | **2.44%** |
+| TF-IDF Linear SVM | 27.50% | 0.2375 | 0.7348 | 0.67% | 3.56% |
+| TF-IDF Logistic Regression | 27.67% | 0.2410 | 0.7369 | 1.33% | 4.00% |
+| Embeddings FFNN | 30.50% | 0.2886 | 0.5493 | 8.67% | 10.22% |
+| Embeddings Linear SVM | 37.50% | 0.3744 | 0.5295 | 18.67% | 22.89% |
+| **Embeddings Logistic Regression** | **38.33%** | **0.3828** | 0.5438 | 17.33% | **23.56%** |
+
+
+**TF-IDF FFNN — HC3 vs. Modern External Dataset**
+
+![TF-IDF FFNN confusion matrices comparing HC3 and modern external evaluation](./docs/images/results/tfidf_ffnn_hc3_vs_modern_confusion.png)
+
+The selected model performed strongly on HC3 but misclassified 439 of 450 modern AI-generated responses as human, demonstrating a substantial decline in AI detection recall.
+
+
+**ROC Curves — Modern External Evaluation**
+
+![ROC curves comparing seven classifiers on modern external data](./docs/images/results/modern_roc_curves.png)
+
+**Comparing Modern AI Detection:** These ROC curves compare how effectively seven classifiers distinguish human-written responses from AI-generated content across two evaluation settings. The left panel includes ChatGPT, Claude, and Gemini, while the right focuses exclusively on modern ChatGPT. This comparison helps determine whether poor generalization extends beyond differences between AI providers.
+
+Despite poor classification performance at its original decision threshold, the TF-IDF FFNN achieved the highest ROC-AUC (0.8574) on the full modern dataset. This suggests that its prediction scores retain useful ranking information, even though the model rarely identifies modern AI-generated responses correctly at its existing threshold.
+
+**Baseline comparison:** A majority-class classifier that always predicts AI would achieve 75% accuracy on the full modern dataset. All seven models fall below this baseline, highlighting the substantial decline in classification performance under distribution shift.
+
+**Key findings:**
+
+- **Significant performance degradation:** All seven classifiers experienced substantial declines in classification performance compared with their original HC3 results.
+- **Highest accuracy:** Embeddings Logistic Regression achieved the highest modern accuracy (38.33%), but with a relatively high human false-positive rate (17.33%).
+- **Poor detection of modern AI:** The TF-IDF FFNN detected only 11 of 450 AI-generated responses (2.44% AI recall) across ChatGPT, Claude, and Gemini, despite correctly identifying all 150 human-written responses.
+- **Poor generalization persists on ChatGPT alone:** On the balanced subset of 150 human-written and 150 modern ChatGPT-generated responses, the TF-IDF FFNN achieved 52.00% accuracy but detected only 6 of 150 ChatGPT responses (4.00% AI recall). This demonstrates that the performance decline is not limited to comparisons across different AI providers, although other dataset differences may contribute.
+
+**Important:** The full modern dataset contains 75% AI-generated responses, while the ChatGPT-only subset contains 50%. Accuracy should therefore be interpreted alongside macro F1, ROC-AUC, and class-specific recall when comparing these evaluations.
+
+**Source:** [Modern model comparison notebook](notebooks/evaluation/modern_model_comparison.ipynb) | [Saved external metrics](data/evaluation/modern_seven_model_comparison.csv)
+
+
+### HC3 Domain-Specific Evaluation
+
+All nine classifiers were evaluated across five HC3 domains using the held-out test set. Macro F1 is reported to account for differences in class distribution across domains.
+
+| Model | Finance | Medicine | Open QA | Reddit ELI5 | Wiki CS/AI |
+|---|---:|---:|---:|---:|---:|
+| RoBERTa | 0.9890 | 0.9974 | **0.9944** | **0.9936** | 0.8966 |
+| **TF-IDF FFNN** | **0.9953** | **1.0000** | 0.9132 | 0.9919 | **0.9290** |
+| TF-IDF Linear SVM | 0.9906 | 0.9974 | 0.9274 | 0.9911 | 0.9172 |
+| TF-IDF Logistic Regression | 0.9882 | 0.9974 | 0.9201 | 0.9893 | 0.9172 |
+| TF-IDF Multinomial NB | 0.9629 | 0.9974 | 0.8324 | 0.9391 | 0.7758 |
+| TF-IDF KNN | 0.7835 | 0.9767 | 0.8350 | 0.9440 | 0.7480 |
+| Embeddings FFNN | 0.9293 | 0.9044 | 0.7641 | 0.9190 | 0.7225 |
+| Embeddings Linear SVM | 0.8715 | 0.7237 | 0.7322 | 0.8489 | 0.6179 |
+| Embeddings Logistic Regression | 0.8601 | 0.7117 | 0.7056 | 0.8472 | 0.6349 |
+
+
+**Domain-Level Performance and Human False-Positive Rates**
+
+![Macro F1 and human false-positive rates across five HC3 domains and nine classifiers](./docs/images/results/hc3_domain_f1_fpr_heatmaps.png)
+
+Domain-level evaluation revealed meaningful performance differences, including elevated human false-positive rates for some classifiers on Wiki CS/AI.
+
+
+**HC3 test samples by domain:**
+- Reddit ELI5: 9,997
+- Finance: 1,283
+- Open QA: 710
+- Medicine: 388
+- Wiki CS/AI: 254
+
+**Key findings:**
+- RoBERTa achieved the highest macro F1 on Reddit ELI5 and Open QA.
+- TF-IDF FFNN performed best on Finance, Medicine, and Wiki CS/AI.
+- Performance varied substantially by domain, particularly for embedding-based classifiers.
+- Wiki CS/AI presented a notable challenge. RoBERTa achieved 89.76% accuracy in this domain, with a 20.47% human false-positive rate.
+- Domain-level variation demonstrates why overall accuracy alone is insufficient to characterize model reliability.
+
+**Source:** [HC3 domain evaluation notebook](notebooks/evaluation/hc3_domain_evaluation.ipynb)
+
+
+### Answer-Length Sensitivity
+
+To investigate whether answer length influenced classification performance, we evaluated RoBERTa and the TF-IDF FFNN across five answer-length groups within the HC3 held-out test set.
+
+![Human and AI recall by answer length for RoBERTa and TF-IDF FFNN](./docs/images/results/hc3_performance_by_answer_length.png)
+
+**Key findings:**
+- For short AI-generated responses (0–49 words), RoBERTa achieved 98.68% AI recall compared with 81.58% for the TF-IDF FFNN.
+- TF-IDF FFNN recall improved substantially for longer responses, suggesting sensitivity to answer length or the availability of linguistic features.
+- The 400+ word group contained only three AI-generated examples, limiting conclusions for that category.
+
+These findings highlight potential length-related dataset shortcuts, although length alone cannot be established as the cause of the observed performance differences.
+
+
 
 ---
 
